@@ -1,8 +1,8 @@
 {
-  "name": "humio-log-viewer",
+  "name": "@kipz/oak",
   "version": "0.0.1",
   "author": "me@kipz.org",
-  "description": "Do humio searchs from the command line",
+  "description": "Do humio searches from the command line",
   "scripts": {
     "watch": "shadow-cljs watch script",
     "build": "shadow-cljs compile npm"

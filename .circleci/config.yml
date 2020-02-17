@@ -1,16 +1,47 @@
+defaults: &defaults
+  docker:
+    - image: theasp/clojurescript-nodejs:shadow-cljs
+  environment:
+    LEIN_ROOT: "true"
+    # Customize the JVM maximum heap limit
+    JVM_OPTS: -Xmx3200m
+  working_directory: ~/repo
+
 version: 2
 jobs:
   build:
-    docker:
-      - image: theasp/clojurescript-nodejs:shadow-cljs
-    environment:
-      LEIN_ROOT: "true"
-      # Customize the JVM maximum heap limit
-      JVM_OPTS: -Xmx3200m
-
-    working_directory: ~/repo
+    <<: *defaults
 
     steps:
       - checkout
       - run: npm ci
       - run: npm run build
+      - persist_to_workspace:
+          root: ~/repo
+          paths: .
+  deploy:
+    <<: *defaults
+    steps:
+      - attach_workspace:
+          at: ~/repo
+      - run:
+          name: Authenticate with registry
+          command: echo "//registry.npmjs.org/:_authToken=$npm_TOKEN" > ~/repo/.npmrc
+      - run:
+          name: Publish package
+          command: npm publish
+
+workflows:
+  version: 2
+  test-deploy:
+    jobs:
+      - test:
+          filters:
+            tags:
+              only: /^v.*/
+      - deploy:
+          filters:
+            tags:
+              only: /^v.*/
+            branches:
+              ignore: /.*/
