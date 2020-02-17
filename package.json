@@ -5,7 +5,7 @@
   "description": "Do humio searchs from the command line",
   "scripts": {
     "watch": "shadow-cljs watch script",
-    "build": "shadow-cljs release release"
+    "build": "shadow-cljs compile npm"
   },
   "dependencies": {
     "request": "^2.88.2",
