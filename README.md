@@ -1,5 +1,7 @@
 # Humio CLI log viewer written in ClojureScript
 
+[![CircleCI](https://circleci.com/gh/kipz/oak.svg?style=svg)](https://circleci.com/gh/kipz/oak)
+
 To connect a repl:
 
 ```bash
