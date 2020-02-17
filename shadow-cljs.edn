@@ -1,0 +1,8 @@
+{:deps {:aliases [:dev :test]}
+ :nrepl {:port 8778}
+ :builds {:script {:target    :node-script
+                   :main     humio.core/cli
+                   :output-to "index.js"}
+          :release {:target :node-library
+                    :output-to "index.js"
+                    :compiler-options {:optimizations :advanced}}}}

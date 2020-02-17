@@ -1,0 +1,20 @@
+{
+  "name": "humio-log-viewer",
+  "version": "0.0.1",
+  "author": "me@kipz.org",
+  "description": "Do humio searchs from the command line",
+  "scripts": {
+    "watch": "shadow-cljs watch script",
+    "build": "shadow-cljs release release"
+  },
+  "dependencies": {
+    "request": "^2.88.2",
+    "js-joda": "1.11.0",
+    "js-joda-timezone": "2.0.1"
+  },
+  "devDependencies": {
+    "shadow-cljs": "^2.8.69",
+    "source-map-support": "0.5.9"
+  },
+  "main": "index.js"
+}
