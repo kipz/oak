@@ -30,14 +30,3 @@ jobs:
       - run:
           name: Publish package
           command: npm publish
-
-workflows:
-  version: 2
-  test-deploy:
-    jobs:
-      - deploy:
-          filters:
-            tags:
-              only: /^v.*/
-            branches:
-              ignore: /.*/
