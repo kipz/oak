@@ -74,7 +74,7 @@
      (<! result-chan))))
 
 (def config
-  {:app         {:command     "humio"
+  {:app         {:command     "oak"
                  :description "A humio CLI"
                  :version     "0.0.1"}
 

@@ -1,15 +1,20 @@
 {
   "name": "@kipz/oak",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "author": "me@kipz.org",
   "description": "Do humio searches from the command line",
   "scripts": {
     "watch": "shadow-cljs watch script",
-    "build": "shadow-cljs compile npm"
+    "build": "shadow-cljs release lib"
   },
   "bin": {
     "oak": "./index.js"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kipz/oak"
+  },
+  "license": "EPL-2.0",
   "dependencies": {
     "request": "^2.88.2",
     "js-joda": "1.11.0",
