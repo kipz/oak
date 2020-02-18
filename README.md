@@ -11,7 +11,7 @@ npm i @kipz/oak -g
 
 ## Running
 
-Export an environment variable called `HUMIO_API_KEY`
+Export an environment variable called `HUMIO_API_KEY` (or provided the `api-key` argument)
 
 ```
 oak query -r "<repo-name>" -s ["<human readable start time e.g. 20s>"] -f ["<field to include>"...] ["<query defaults to all>"]
