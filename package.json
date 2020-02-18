@@ -1,11 +1,11 @@
 {
   "name": "@kipz/oak",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "author": "me@kipz.org",
   "description": "Do humio searches from the command line",
   "scripts": {
     "watch": "shadow-cljs watch script",
-    "build": "shadow-cljs release lib"
+    "build": "shadow-cljs release script"
   },
   "bin": {
     "oak": "./index.js"
