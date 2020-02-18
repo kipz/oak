@@ -1,6 +1,6 @@
 {
   "name": "@kipz/oak",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "author": "me@kipz.org",
   "description": "Do humio searches from the command line",
   "scripts": {
@@ -16,9 +16,7 @@
   },
   "license": "EPL-2.0",
   "dependencies": {
-    "request": "^2.88.2",
-    "js-joda": "1.11.0",
-    "js-joda-timezone": "2.0.1"
+    "request": "^2.88.2"
   },
   "devDependencies": {
     "shadow-cljs": "^2.8.69",

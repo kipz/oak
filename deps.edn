@@ -3,7 +3,6 @@
         cli-matic {:git/url "https://github.com/lins05/cli-matic.git"
                    :sha "d94f8e26ae8e79009446c2bc0d385dcaea572519"}
         cljs-node-io {:mvn/version "1.1.2"}
-        tick {:mvn/version "0.4.17-alpha"}
         thheller/shadow-cljsjs {:mvn/version "0.0.16"}}
  :aliases
  {:dev

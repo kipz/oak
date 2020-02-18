@@ -14,7 +14,26 @@ npm i @kipz/oak -g
 Export an environment variable called `HUMIO_API_KEY` (or provided the `api-key` argument)
 
 ```
-oak query -r "<repo-name>" -s ["<human readable start time e.g. 20s>"] -f ["<field to include>"...] ["<query defaults to all>"]
+oak query -r <repo-name> [opts...] ["query string"]
+```
+
+Query sub-command options:
+
+```
+NAME:
+ oak query - Query logs in humio via REST API
+
+USAGE:
+ oak query [command options] query ...
+
+OPTIONS:
+   -r, --repo S*             Repository
+       --query S             Query expressions
+   -u, --unix F    false     Unix timestamps instead of human readable ones
+   -f, --fields S            Additional fields to display
+   -s, --start S   2minutes  Relative time e.g. 1minute, 24hours etc
+   -?, --help
+
 ```
 
 ## Development

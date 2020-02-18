@@ -41,13 +41,15 @@
          #(go (>! output-chan %)))))
 
 (defn render-line
-  [fields line]
+  [{:keys [fields unix]} line]
   (try
     (let [msg (->obj line :keywordize-keys false)
+          unix-ts (get msg "@timestamp")
+          ts (if unix unix-ts (.toISOString (js/Date. 1331209044000)))
           extra (str/join " " (map #(get msg %) fields))]
-      (println (format "%s %s %s" (get msg "@timestamp") extra (get msg "@rawstring"))))
+      (println (format "%s %s %s" ts extra (get msg "@rawstring"))))
     (catch :default e
-      (println "Broken line: " line))))
+      (println "Broken line: " e line))))
 
 (defn run-search
   [opts]
@@ -65,7 +67,7 @@
              idx (str/index-of chunk "\n")]
          (if idx
            (do
-             (render-line (:fields opts) (subs chunk 0 idx))
+             (render-line opts (subs chunk 0 idx))
              (if (= idx (- (count chunk) 1))
                (recur nil)
                (recur (subs chunk (+ idx 1)))))
@@ -88,8 +90,9 @@
                   :description "Query logs in humio via REST API"
                   :opts        [{:option "repo" :short "r" :as "Repository" :type :string :default :present}
                                 {:option "query" :short 0 :as "Query expressions" :type :string :default ""}
+                                {:option "unix" :short "u" :as "Unix timestamps instead of human readable ones" :type :flag :default false}
                                 {:option "fields" :short "f" :as "Additional fields to display" :type :string :multiple true}
-                                {:option "start" :short "s" :as "Relative time e.g. 1minute, 24hours etc" :type :string :default "24hours"}]
+                                {:option "start" :short "s" :as "Relative time e.g. 1minute, 24hours etc" :type :string :default "2minutes"}]
                   :runs        run-search}]})
 
 (defn ^:export cli
